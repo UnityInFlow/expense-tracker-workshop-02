@@ -1,19 +1,19 @@
-# Step 7 — OpenAPI finalizace (reseni)
+# Step 7 — OpenAPI finalization (solution)
 
-## FINALNI STAV SESSION 2
+## FINAL STATE OF SESSION 2
 
-## Co jsme pridali v Session 2
-- ExpenseRepository.kt — SQL dotazy, oddelene od logiky
-- GlobalExceptionHandler.kt — konzistentni error responses
-- ExpenseNotFoundException.kt — vlastni vyjimka
+## What we added in Session 2
+- ExpenseRepository.kt — SQL queries, separated from business logic
+- GlobalExceptionHandler.kt — consistent error responses
+- ExpenseNotFoundException.kt — custom exception
 - schema.sql — CREATE TABLE
-- @Valid + @NotBlank/@Min — validace requestu
+- @Valid + @NotBlank/@Min — request validation
 - @Schema + @ApiResponse — production-ready Swagger
 
-## Co se NEZMENILO
-- Expense.kt — data model (jen pridane @Schema anotace)
-- ExpenseController.kt — HTTP vrstva beze zmeny (az na @Valid a throw)
+## What did NOT change
+- Expense.kt — data model (only @Schema annotations added)
+- ExpenseController.kt — HTTP layer unchanged (except @Valid and throw)
 
-## Dalsi kroky
-- W01 Kotlin Idioms — idiomaticky Kotlin
-- W02 Spring Boot Basics — pokrocile Spring Boot
+## Next steps
+- W01 Kotlin Idioms — idiomatic Kotlin
+- W02 Spring Boot Basics — advanced Spring Boot

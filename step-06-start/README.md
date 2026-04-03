@@ -1,15 +1,15 @@
 # Step 6 — Error handling
 
-## Co uz mame
-- Step 1-4: SQLite + Repository + Service
-- Step 5: Validace requestu
+## What we already have
+- Steps 1-4: SQLite + Repository + Service
+- Step 5: Request validation
 
-## Co budeme delat
-Centralni error handling — vsechny chyby ve stejnem JSON formatu.
-@RestControllerAdvice = globalny zachytavac vyjimek.
+## What we will do
+Centralized error handling — all errors in the same JSON format.
+@RestControllerAdvice = global exception interceptor.
 
-## Ukoly
-1. Vytvor GlobalExceptionHandler.kt (viz TODO soubor)
-2. Vytvor ExpenseNotFoundException.kt
-3. Uprav findById v Controller aby hazela vyjimku misto ResponseEntity
-4. Otestuj pres Swagger UI
+## Tasks
+1. Create GlobalExceptionHandler.kt (see TODO file)
+2. Create ExpenseNotFoundException.kt
+3. Update findById in Controller to throw an exception instead of ResponseEntity
+4. Test via Swagger UI

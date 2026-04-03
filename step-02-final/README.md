@@ -1,11 +1,11 @@
-# Step 2 — Repository: INSERT a SELECT (reseni)
+# Step 2 — Repository: INSERT and SELECT (solution)
 
-## Co jsme udelali
-- @Repository = Spring spravuje tuto tridu
-- JdbcTemplate = Spring wrapper nad JDBC, zkrati 20 radku na 3
-- GeneratedKeyHolder = ziskani auto-generovaneho ID po INSERT
-- query() s lambda = mapovani radku databaze na Kotlin objekty
-- rs = ResultSet — jeden radek z databaze
+## What we did
+- @Repository = Spring manages this class
+- JdbcTemplate = Spring wrapper over JDBC, reduces 20 lines to 3
+- GeneratedKeyHolder = retrieving the auto-generated ID after INSERT
+- query() with lambda = mapping database rows to Kotlin objects
+- rs = ResultSet — one row from the database
 
-## Dalsi krok
-Otevri `step-03-start/` pro Repository: DELETE a findById.
+## Next step
+Open `step-03-start/` for Repository: DELETE and findById.

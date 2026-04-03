@@ -1,17 +1,17 @@
-# Step 1 — SQLite setup a schema (reseni)
+# Step 1 — SQLite setup and schema (solution)
 
-## Co jsme udelali
-- SQLite = databaze jako soubor na disku (expenses.db)
-- Zadny server, zadny port, zadna instalace
-- schema.sql se spusti automaticky pri startu (spring.sql.init.mode: always)
-- IF NOT EXISTS = bezpecne pri restartu
+## What we did
+- SQLite = database as a file on disk (expenses.db)
+- No server, no port, no installation
+- schema.sql runs automatically on startup (spring.sql.init.mode: always)
+- IF NOT EXISTS = safe on restart
 
-## Overeni
+## Verification
 ```bash
 ls -la expenses.db
 sqlite3 expenses.db ".tables"     # → expenses
 sqlite3 expenses.db "SELECT * FROM expenses;"
 ```
 
-## Dalsi krok
-Otevri `step-02-start/` pro Repository: INSERT a SELECT.
+## Next step
+Open `step-02-start/` for Repository: INSERT and SELECT.

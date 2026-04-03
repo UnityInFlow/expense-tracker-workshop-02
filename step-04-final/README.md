@@ -1,15 +1,15 @@
-# Step 4 — Service → Repository (reseni)
+# Step 4 — Service → Repository (solution)
 
-## KLICOVY MOMENT: Data preziji restart!
+## KEY MOMENT: Data survives a restart!
 
-1. Pridejte vydaj pres Swagger UI
-2. Restartujte aplikaci (Ctrl+C, ./mvnw spring-boot:run)
-3. GET /expenses → data jsou stale tam!
+1. Add an expense via Swagger UI
+2. Restart the application (Ctrl+C, ./mvnw spring-boot:run)
+3. GET /expenses → data is still there!
 
-## Co jsme udelali
-- ExpenseService nyni pouziva ExpenseRepository misto HashMap
-- Constructor injection — Spring vlozi repository automaticky
-- Controller se NEZMENIL ani radek — architektura ze Session 1 funguje
+## What we did
+- ExpenseService now uses ExpenseRepository instead of HashMap
+- Constructor injection — Spring injects the repository automatically
+- The Controller did NOT change a single line — the architecture from Session 1 works
 
-## Dalsi krok
-Otevri `step-05-start/` pro Validaci requestu.
+## Next step
+Open `step-05-start/` for request validation.

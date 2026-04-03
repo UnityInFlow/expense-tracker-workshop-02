@@ -8,7 +8,7 @@ import java.sql.Statement
 @Repository
 class ExpenseRepository(private val jdbc: JdbcTemplate) {
 
-    // INSERT s auto-generovanym ID
+    // INSERT with auto-generated ID
     fun save(description: String, amount: Int, date: String): Expense {
         val sql = "INSERT INTO expenses (description, amount, date) VALUES (?, ?, ?)"
         val keyHolder = GeneratedKeyHolder()
@@ -23,7 +23,7 @@ class ExpenseRepository(private val jdbc: JdbcTemplate) {
         return Expense(id, description, amount, date)
     }
 
-    // SELECT vsech radku — lambda se zavola pro kazdy radek
+    // SELECT all rows — lambda is called for each row
     fun findAll(): List<Expense> {
         return jdbc.query("SELECT * FROM expenses ORDER BY id") { rs, _ ->
             Expense(
@@ -35,17 +35,17 @@ class ExpenseRepository(private val jdbc: JdbcTemplate) {
         }
     }
 
-    // TODO: Implementujte findById(id: Int): Expense?
-    //       Pouzijte jdbc.queryForObject()
-    //       POZOR: queryForObject hazi EmptyResultDataAccessException kdyz nic nenajde
-    //       Zachytte ji a vradte null
+    // TODO: Implement findById(id: Int): Expense?
+    //       Use jdbc.queryForObject()
+    //       NOTE: queryForObject throws EmptyResultDataAccessException when nothing is found
+    //       Catch it and return null
     //       Hint:
     //       return try {
     //           jdbc.queryForObject("SELECT * FROM expenses WHERE id = ?",
     //               { rs, _ -> Expense(...) }, id)
     //       } catch (e: EmptyResultDataAccessException) { null }
 
-    // TODO: Implementujte delete(id: Int): Boolean
-    //       Pouzijte jdbc.update() — vrati pocet smazanych radku
+    // TODO: Implement delete(id: Int): Boolean
+    //       Use jdbc.update() — returns number of deleted rows
     //       Hint: return jdbc.update("DELETE FROM expenses WHERE id = ?", id) > 0
 }

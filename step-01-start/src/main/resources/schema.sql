@@ -1,4 +1,4 @@
--- TODO: Vytvorte tabulku expenses odpovidajici data class Expense
+-- TODO: Create the expenses table matching the Expense data class
 -- Hint: CREATE TABLE IF NOT EXISTS expenses (
 --     id          INTEGER PRIMARY KEY AUTOINCREMENT,
 --     description TEXT    NOT NULL,

@@ -2,7 +2,7 @@ package dev.workshop.expense
 
 import org.springframework.stereotype.Service
 
-// Constructor injection — Spring automaticky vlozi repository
+// Constructor injection — Spring automatically injects the repository
 @Service
 class ExpenseService(private val repository: ExpenseRepository) {
 
@@ -17,4 +17,4 @@ class ExpenseService(private val repository: ExpenseRepository) {
 
     fun total(): Int = repository.findAll().sumOf { it.amount }
 }
-// Controller se NEZMENIL ani radek!
+// The Controller did NOT change a single line!

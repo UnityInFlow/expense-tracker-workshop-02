@@ -1,11 +1,11 @@
-# Step 2 — Repository: INSERT a SELECT
+# Step 2 — Repository: INSERT and SELECT
 
-## Co uz mame
-- Step 1: SQLite databaze s tabulkou expenses
+## What we already have
+- Step 1: SQLite database with the expenses table
 
-## Co budeme delat
-ExpenseRepository — trida ktera komunikuje s databazi pres JdbcTemplate.
-Implementujeme save() a findAll().
+## What we will do
+ExpenseRepository — a class that communicates with the database via JdbcTemplate.
+We implement save() and findAll().
 
-## Ukoly
-Otevri ExpenseRepository.kt a doplni metody save() a findAll() kde vidis TODO.
+## Tasks
+Open ExpenseRepository.kt and fill in the save() and findAll() methods where you see TODO.

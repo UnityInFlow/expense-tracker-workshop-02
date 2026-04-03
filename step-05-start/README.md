@@ -1,14 +1,14 @@
-# Step 5 — Validace requestu @Valid
+# Step 5 — Request validation @Valid
 
-## Co uz mame
-- Step 1-4: SQLite + Repository + Service propojeni
+## What we already have
+- Steps 1-4: SQLite + Repository + Service connection
 
-## Co budeme delat
-Pridame validaci requestu — @Valid, @NotBlank, @Min.
-Spatne requesty dostanou 400 Bad Request misto 500.
+## What we will do
+Add request validation — @Valid, @NotBlank, @Min.
+Bad requests will get 400 Bad Request instead of 500.
 
-## Ukoly
-1. Pridej validacni zavislost do pom.xml (viz TODO)
-2. Pridej anotace do CreateExpenseRequest.kt (viz TODO)
-3. Pridej @Valid do ExpenseController.kt (viz TODO)
-4. Otestuj pres Swagger UI: posli prazdny description nebo zaporne amount
+## Tasks
+1. Add the validation dependency to pom.xml (see TODO)
+2. Add annotations to CreateExpenseRequest.kt (see TODO)
+3. Add @Valid to ExpenseController.kt (see TODO)
+4. Test via Swagger UI: send an empty description or a negative amount

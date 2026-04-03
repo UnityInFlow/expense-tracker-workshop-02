@@ -1,10 +1,10 @@
-# Step 3 — Repository: DELETE a findById (reseni)
+# Step 3 — Repository: DELETE and findById (solution)
 
-## Co jsme udelali
-- findById() pouziva queryForObject() — vyhodi vyjimku kdyz nenajde
-- EmptyResultDataAccessException = zachytime a vratime null
-- delete() vraci Boolean — true pokud se neco smazalo
-- jdbc.update() vraci pocet ovlivnenych radku
+## What we did
+- findById() uses queryForObject() — throws an exception when nothing is found
+- EmptyResultDataAccessException = we catch it and return null
+- delete() returns Boolean — true if something was deleted
+- jdbc.update() returns the number of affected rows
 
-## Dalsi krok
-Otevri `step-04-start/` pro Service → Repository propojeni.
+## Next step
+Open `step-04-start/` for Service → Repository connection.

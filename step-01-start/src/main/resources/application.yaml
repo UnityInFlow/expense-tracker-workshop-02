@@ -1,7 +1,7 @@
 server:
   port: 8080
 
-# TODO: Pridejte konfiguraci pro SQLite:
+# TODO: Add SQLite configuration:
 # spring:
 #   datasource:
 #     url: jdbc:sqlite:expenses.db

@@ -1,23 +1,23 @@
 # Setup Guide — Expense Tracker Workshop Session 2
 
-## Predpoklad: absolvovana Session 1
+## Prerequisite: completed Session 1
 
-Tento workshop navazuje na Session 1. Predpokladame ze mas:
-- IntelliJ IDEA Community Edition nainstalovanou
-- JDK 21 nainstalovanou
-- Znalost zakladu Spring Boot z Session 1
+This workshop builds on Session 1. We assume you have:
+- IntelliJ IDEA Community Edition installed
+- JDK 21 installed
+- Knowledge of Spring Boot basics from Session 1
 
 ## 1. IntelliJ IDEA Community Edition
 
 ### macOS
-1. Stahni z https://www.jetbrains.com/idea/download/ (Community Edition — zdarma)
-2. Otevri `.dmg`, pretahni do Applications
-3. Spust IntelliJ IDEA
+1. Download from https://www.jetbrains.com/idea/download/ (Community Edition — free)
+2. Open `.dmg`, drag to Applications
+3. Launch IntelliJ IDEA
 
 ### Windows
-1. Stahni z https://www.jetbrains.com/idea/download/ (Community Edition — zdarma)
-2. Spust installer, vse ponech na vychozich hodnotach
-3. Spust IntelliJ IDEA
+1. Download from https://www.jetbrains.com/idea/download/ (Community Edition — free)
+2. Run the installer, leave all settings at their defaults
+3. Launch IntelliJ IDEA
 
 ### Linux
 ```bash
@@ -26,22 +26,22 @@ sudo snap install intellij-idea-community --classic
 
 ## 2. JDK 21
 
-### Pres SDKMAN (doporuceno — macOS / Linux)
+### Via SDKMAN (recommended — macOS / Linux)
 ```bash
 curl -s "https://get.sdkman.io" | bash
 source "$HOME/.sdkman/bin/sdkman-init.sh"
 sdk install java 21-tem
 ```
 
-### Manualne (Windows)
-1. Stahni z https://adoptium.net/temurin/releases/?version=21
-2. Spust installer
-3. Over v terminalu: `java -version` → melo ukazat `openjdk version "21..."`
+### Manually (Windows)
+1. Download from https://adoptium.net/temurin/releases/?version=21
+2. Run the installer
+3. Verify in terminal: `java -version` → should show `openjdk version "21..."`
 
-### Overeni
+### Verification
 ```bash
 java -version
-# ocekavany vystup: openjdk version "21.x.x" ...
+# expected output: openjdk version "21.x.x" ...
 ```
 
 ## 3. sqlite3 CLI
@@ -57,9 +57,9 @@ apt install sqlite3
 ```
 
 ### Windows
-Stahni z https://www.sqlite.org/download.html (sqlite-tools-win-x64)
+Download from https://www.sqlite.org/download.html (sqlite-tools-win-x64)
 
-### Overeni
+### Verification
 ```bash
 sqlite3 --version
 ```
@@ -71,23 +71,23 @@ git clone https://github.com/UnityInFlow/expense-tracker-workshop-02.git
 cd expense-tracker-workshop-02
 ```
 
-## 5. Otevreni projektu v IntelliJ
+## 5. Opening the project in IntelliJ
 
-1. Otevri IntelliJ IDEA
-2. File → Open → vyber slozku `step-01-start/` (nebo aktualniho kroku)
-3. Pockej az IntelliJ stahne zavislosti (dole progress bar)
-4. V pravem dolnim rohu over ze je nastaveny JDK 21
+1. Open IntelliJ IDEA
+2. File → Open → select the `step-01-start/` folder (or current step)
+3. Wait for IntelliJ to download dependencies (progress bar at the bottom)
+4. Check in the bottom right corner that JDK 21 is configured
 
 ## Troubleshooting
 
-**IntelliJ nerozpoznava Kotlin:**
-→ File → Settings → Plugins → over ze Kotlin plugin je enabled
+**IntelliJ does not recognize Kotlin:**
+→ File → Settings → Plugins → verify the Kotlin plugin is enabled
 
-**java -version ukazuje starou verzi:**
-→ `sdk use java 21-tem` (SDKMAN) nebo nastav JAVA_HOME rucne
+**java -version shows an old version:**
+→ `sdk use java 21-tem` (SDKMAN) or set JAVA_HOME manually
 
-**Git clone selhava:**
-→ Over ze mas `git` nainstalovaný: `git --version`
+**Git clone fails:**
+→ Verify that you have `git` installed: `git --version`
 
-**IntelliJ stahuje zavislosti prilis dlouho:**
-→ Normalni pri prvnim otevreni. Pockej 2-5 minut.
+**IntelliJ is downloading dependencies for too long:**
+→ Normal on first open. Wait 2-5 minutes.

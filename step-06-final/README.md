@@ -1,16 +1,16 @@
-# Step 6 — Error handling (reseni)
+# Step 6 — Error handling (solution)
 
-## Co jsme udelali
-- ErrorResponse = konzistentni JSON format pro vsechny chyby
-- @RestControllerAdvice = jeden handler pro vsechny controllery
-- @ExceptionHandler = metoda ktera zachyti konkretni vyjimku
-- ExpenseNotFoundException = vlastni vyjimka s jasnou zpravou
-- Elvis operator ?: v controlleru — pokud null, throw vyjimku
+## What we did
+- ErrorResponse = consistent JSON format for all errors
+- @RestControllerAdvice = one handler for all controllers
+- @ExceptionHandler = method that catches a specific exception
+- ExpenseNotFoundException = custom exception with a clear message
+- Elvis operator ?: in controller — if null, throw exception
 
-## Testovani
-- GET /expenses/999 → 404 Not Found s JSON ErrorResponse
-- POST /expenses prazdny description → 400 Validation Error
-- Obe chyby maji stejny format
+## Testing
+- GET /expenses/999 → 404 Not Found with JSON ErrorResponse
+- POST /expenses with empty description → 400 Validation Error
+- Both errors have the same format
 
-## Dalsi krok
-Otevri `step-07-start/` pro OpenAPI finalizaci.
+## Next step
+Open `step-07-start/` for OpenAPI finalization.

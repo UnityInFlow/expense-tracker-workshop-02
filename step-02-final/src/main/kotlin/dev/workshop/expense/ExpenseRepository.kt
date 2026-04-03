@@ -8,7 +8,7 @@ import java.sql.Statement
 @Repository
 class ExpenseRepository(private val jdbc: JdbcTemplate) {
 
-    // INSERT s auto-generovanym ID
+    // INSERT with auto-generated ID
     fun save(description: String, amount: Int, date: String): Expense {
         val sql = "INSERT INTO expenses (description, amount, date) VALUES (?, ?, ?)"
         val keyHolder = GeneratedKeyHolder()
@@ -19,12 +19,12 @@ class ExpenseRepository(private val jdbc: JdbcTemplate) {
             ps.setString(3, date)
             ps
         }, keyHolder)
-        // keyHolder.key!! = auto-generovane ID z databaze
+        // keyHolder.key!! = auto-generated ID from the database
         val id = keyHolder.key!!.toInt()
         return Expense(id, description, amount, date)
     }
 
-    // SELECT vsech radku — lambda se zavola pro kazdy radek
+    // SELECT all rows — lambda is called for each row
     fun findAll(): List<Expense> {
         return jdbc.query("SELECT * FROM expenses ORDER BY id") { rs, _ ->
             Expense(

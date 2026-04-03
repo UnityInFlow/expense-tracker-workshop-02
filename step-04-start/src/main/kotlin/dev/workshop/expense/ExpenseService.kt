@@ -4,15 +4,15 @@ import org.springframework.stereotype.Service
 
 @Service
 class ExpenseService {
-    // TODO: Zmenit na constructor injection s ExpenseRepository:
+    // TODO: Change to constructor injection with ExpenseRepository:
     //       class ExpenseService(private val repository: ExpenseRepository)
-    //       A prepsat vsechny metody aby pouzivaly repository misto database
+    //       And rewrite all methods to use repository instead of database
 
     private val database = HashMap<Int, Expense>()
     private var nextId = 1
 
     fun add(description: String, amount: Int): Expense {
-        // TODO: Prepsat na repository.save(description, amount, "2024-01-15")
+        // TODO: Rewrite to repository.save(description, amount, "2024-01-15")
         val expense = Expense(nextId, description, amount, "2024-01-15")
         database[nextId] = expense
         nextId++
@@ -20,14 +20,14 @@ class ExpenseService {
     }
 
     fun getAll(): List<Expense> = database.values.toList()
-    // TODO: Prepsat na repository.findAll()
+    // TODO: Rewrite to repository.findAll()
 
     fun findById(id: Int): Expense? = database[id]
-    // TODO: Prepsat na repository.findById(id)
+    // TODO: Rewrite to repository.findById(id)
 
     fun delete(id: Int): Boolean = database.remove(id) != null
-    // TODO: Prepsat na repository.delete(id)
+    // TODO: Rewrite to repository.delete(id)
 
     fun total(): Int = database.values.sumOf { it.amount }
-    // TODO: Prepsat na repository.findAll().sumOf { it.amount }
+    // TODO: Rewrite to repository.findAll().sumOf { it.amount }
 }

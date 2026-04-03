@@ -6,18 +6,18 @@ import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
 
-// Konzistentni chybova odpoved
+// Consistent error response
 data class ErrorResponse(
     val status: Int,
     val error: String,
     val message: String
 )
 
-// @RestControllerAdvice = globalny zachytavac vyjimek pro vsechny controllery
+// @RestControllerAdvice = global exception interceptor for all controllers
 @RestControllerAdvice
 class GlobalExceptionHandler {
 
-    // Validacni chyby — @Valid selze
+    // Validation errors — @Valid fails
     @ExceptionHandler(MethodArgumentNotValidException::class)
     fun handleValidation(ex: MethodArgumentNotValidException): ResponseEntity<ErrorResponse> {
         val message = ex.bindingResult.fieldErrors
@@ -27,19 +27,19 @@ class GlobalExceptionHandler {
         )
     }
 
-    // Vydaj nenalezen
+    // Expense not found
     @ExceptionHandler(ExpenseNotFoundException::class)
     fun handleNotFound(ex: ExpenseNotFoundException): ResponseEntity<ErrorResponse> {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-            ErrorResponse(404, "Not Found", ex.message ?: "Vydaj nenalezen")
+            ErrorResponse(404, "Not Found", ex.message ?: "Expense not found")
         )
     }
 
-    // Neocekavane chyby
+    // Unexpected errors
     @ExceptionHandler(Exception::class)
     fun handleGeneral(ex: Exception): ResponseEntity<ErrorResponse> {
         return ResponseEntity.internalServerError().body(
-            ErrorResponse(500, "Internal Server Error", "Nastala neocekavana chyba")
+            ErrorResponse(500, "Internal Server Error", "An unexpected error occurred")
         )
     }
 }

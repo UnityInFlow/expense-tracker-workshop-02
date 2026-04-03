@@ -1,18 +1,18 @@
-# Step 5 — Validace requestu @Valid (reseni)
+# Step 5 — Request validation @Valid (solution)
 
-## Co jsme udelali
+## What we did
 - spring-boot-starter-validation = Jakarta Bean Validation
-- @field: prefix = v Kotlin data class nutny pro spravne aplikovani anotaci
-- @NotBlank = nesmi byt null ani prazdny retezec
-- @Size = omezeni delky retezce
-- @Min = minimalni hodnota cisla
-- @Valid v controlleru = aktivuje validaci pro tento parametr
+- @field: prefix = required in Kotlin data class for correct annotation application
+- @NotBlank = must not be null or empty string
+- @Size = string length constraint
+- @Min = minimum numeric value
+- @Valid in controller = activates validation for this parameter
 
-## Testovani
-Posli pres Swagger UI:
+## Testing
+Send via Swagger UI:
 - `{"description": "", "amount": 100}` → 400 Bad Request
 - `{"description": "Test", "amount": 0}` → 400 Bad Request
 - `{"description": "Test", "amount": 100}` → 201 Created
 
-## Dalsi krok
-Otevri `step-06-start/` pro Error handling.
+## Next step
+Open `step-06-start/` for error handling.

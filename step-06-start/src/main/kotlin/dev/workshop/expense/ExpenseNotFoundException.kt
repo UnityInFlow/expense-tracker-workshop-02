@@ -1,4 +1,4 @@
 package dev.workshop.expense
 
-// TODO: Vytvorte tridu ExpenseNotFoundException ktera dedi z RuntimeException
-// Hint: class ExpenseNotFoundException(id: Int) : RuntimeException("Vydaj s ID $id nebyl nalezen")
+// TODO: Create the ExpenseNotFoundException class that inherits from RuntimeException
+// Hint: class ExpenseNotFoundException(id: Int) : RuntimeException("Expense with ID $id not found")

@@ -6,8 +6,8 @@ import org.springframework.jdbc.core.JdbcTemplate
 @Repository
 class ExpenseRepository(private val jdbc: JdbcTemplate) {
 
-    // TODO: Implementujte metodu save(description, amount, date): Expense
-    //       Pouzijte jdbc.update() s GeneratedKeyHolder pro ziskani ID
+    // TODO: Implement the save(description, amount, date): Expense method
+    //       Use jdbc.update() with GeneratedKeyHolder to retrieve the ID
     //       Hint:
     //       val sql = "INSERT INTO expenses (description, amount, date) VALUES (?, ?, ?)"
     //       val keyHolder = GeneratedKeyHolder()
@@ -20,8 +20,8 @@ class ExpenseRepository(private val jdbc: JdbcTemplate) {
     //       }, keyHolder)
     //       return Expense(keyHolder.key!!.toInt(), description, amount, date)
 
-    // TODO: Implementujte metodu findAll(): List<Expense>
-    //       Pouzijte jdbc.query() s lambda pro mapovani radku
+    // TODO: Implement the findAll(): List<Expense> method
+    //       Use jdbc.query() with a lambda for row mapping
     //       Hint:
     //       return jdbc.query("SELECT * FROM expenses ORDER BY id") { rs, _ ->
     //           Expense(rs.getInt("id"), rs.getString("description"),

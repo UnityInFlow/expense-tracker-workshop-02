@@ -1,11 +1,11 @@
-# Step 3 — Repository: DELETE a findById
+# Step 3 — Repository: DELETE and findById
 
-## Co uz mame
-- Step 1: SQLite databaze s tabulkou expenses
-- Step 2: ExpenseRepository s save() a findAll()
+## What we already have
+- Step 1: SQLite database with the expenses table
+- Step 2: ExpenseRepository with save() and findAll()
 
-## Co budeme delat
-Doplnime ExpenseRepository o findById() a delete().
+## What we will do
+Add findById() and delete() to ExpenseRepository.
 
-## Ukoly
-Otevri ExpenseRepository.kt a doplni metody findById() a delete() kde vidis TODO.
+## Tasks
+Open ExpenseRepository.kt and fill in the findById() and delete() methods where you see TODO.

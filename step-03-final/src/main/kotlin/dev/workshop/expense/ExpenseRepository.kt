@@ -8,7 +8,7 @@ import java.sql.Statement
 @Repository
 class ExpenseRepository(private val jdbc: JdbcTemplate) {
 
-    // INSERT s auto-generovanym ID
+    // INSERT with auto-generated ID
     fun save(description: String, amount: Int, date: String): Expense {
         val sql = "INSERT INTO expenses (description, amount, date) VALUES (?, ?, ?)"
         val keyHolder = GeneratedKeyHolder()
@@ -23,7 +23,7 @@ class ExpenseRepository(private val jdbc: JdbcTemplate) {
         return Expense(id, description, amount, date)
     }
 
-    // SELECT vsech radku — lambda se zavola pro kazdy radek
+    // SELECT all rows — lambda is called for each row
     fun findAll(): List<Expense> {
         return jdbc.query("SELECT * FROM expenses ORDER BY id") { rs, _ ->
             Expense(
@@ -35,7 +35,7 @@ class ExpenseRepository(private val jdbc: JdbcTemplate) {
         }
     }
 
-    // SELECT jednoho radku — vyhodi vyjimku kdyz nenajde
+    // SELECT a single row — throws an exception when nothing is found
     fun findById(id: Int): Expense? {
         return try {
             jdbc.queryForObject(
@@ -46,11 +46,11 @@ class ExpenseRepository(private val jdbc: JdbcTemplate) {
                 )}, id
             )
         } catch (e: org.springframework.dao.EmptyResultDataAccessException) {
-            null  // vydaj neexistuje → null misto vyjimky
+            null  // expense does not exist → null instead of an exception
         }
     }
 
-    // DELETE — vrati true pokud se neco smazalo
+    // DELETE — returns true if something was deleted
     fun delete(id: Int): Boolean =
         jdbc.update("DELETE FROM expenses WHERE id = ?", id) > 0
 }

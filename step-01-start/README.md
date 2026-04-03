@@ -1,13 +1,13 @@
-# Step 1 — SQLite setup a schema
+# Step 1 — SQLite setup and schema
 
-## Co uz mame
-Session 1: Kompletni REST API s Expense Tracker — data v HashMap (zmizi po restartu).
+## What we already have
+Session 1: Complete REST API with Expense Tracker — data in HashMap (disappears on restart).
 
-## Co budeme delat
-Pridame SQLite databazi — soubor na disku. Data preziji restart.
+## What we will do
+Add a SQLite database — a file on disk. Data will survive a restart.
 
-## Ukoly
-1. Pridej SQLite zavislosti do pom.xml (viz TODO)
-2. Uprav application.yaml pro SQLite (viz TODO)
-3. Vytvor src/main/resources/schema.sql (viz TODO)
-4. Spust aplikaci a over: ls -la expenses.db
+## Tasks
+1. Add SQLite dependency to pom.xml (see TODO)
+2. Update application.yaml for SQLite (see TODO)
+3. Create src/main/resources/schema.sql (see TODO)
+4. Run the application and verify: ls -la expenses.db

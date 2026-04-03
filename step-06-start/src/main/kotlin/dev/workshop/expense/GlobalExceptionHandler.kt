@@ -1,16 +1,16 @@
 package dev.workshop.expense
 
-// TODO: Vytvorte GlobalExceptionHandler s anotaci @RestControllerAdvice
+// TODO: Create GlobalExceptionHandler with the @RestControllerAdvice annotation
 //
-// 1. Vytvorte data class ErrorResponse(val status: Int, val error: String, val message: String)
+// 1. Create data class ErrorResponse(val status: Int, val error: String, val message: String)
 //
-// 2. Pridejte @ExceptionHandler(MethodArgumentNotValidException::class)
+// 2. Add @ExceptionHandler(MethodArgumentNotValidException::class)
 //    fun handleValidation(ex: MethodArgumentNotValidException): ResponseEntity<ErrorResponse>
 //    Hint: ex.bindingResult.fieldErrors.joinToString(", ") { "${it.field}: ${it.defaultMessage}" }
 //
-// 3. Pridejte @ExceptionHandler(ExpenseNotFoundException::class)
+// 3. Add @ExceptionHandler(ExpenseNotFoundException::class)
 //    fun handleNotFound(ex: ExpenseNotFoundException): ResponseEntity<ErrorResponse>
 //
-// 4. Pridejte @ExceptionHandler(Exception::class)
+// 4. Add @ExceptionHandler(Exception::class)
 //    fun handleGeneral(ex: Exception): ResponseEntity<ErrorResponse>
-//    Pro neocekavane chyby — vrati 500
+//    For unexpected errors — returns 500

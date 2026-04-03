@@ -5,14 +5,14 @@ import jakarta.validation.constraints.Min
 import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.Size
 
-@Schema(description = "Request pro vytvoreni noveho vydaje")
+@Schema(description = "Request for creating a new expense")
 data class CreateExpenseRequest(
-    @Schema(description = "Popis vydaje", example = "Obed v restauraci")
-    @field:NotBlank(message = "Popis nesmi byt prazdny")
-    @field:Size(min = 2, max = 100, message = "Popis musi mit 2-100 znaku")
+    @Schema(description = "Expense description", example = "Lunch at restaurant")
+    @field:NotBlank(message = "Description must not be empty")
+    @field:Size(min = 2, max = 100, message = "Description must be 2-100 characters")
     val description: String,
 
-    @Schema(description = "Castka v Kc", example = "150")
-    @field:Min(value = 1, message = "Castka musi byt alespon 1 Kc")
+    @Schema(description = "Amount in CZK", example = "150")
+    @field:Min(value = 1, message = "Amount must be at least 1 CZK")
     val amount: Int
 )

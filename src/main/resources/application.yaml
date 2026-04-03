@@ -1,0 +1,11 @@
+server:
+  port: 8080
+
+# TODO: Add SQLite configuration:
+# spring:
+#   datasource:
+#     url: jdbc:sqlite:expenses.db
+#     driver-class-name: org.sqlite.JDBC
+#   sql:
+#     init:
+#       mode: always

@@ -1,0 +1,7 @@
+-- TODO: Create the expenses table matching the Expense data class
+-- Hint: CREATE TABLE IF NOT EXISTS expenses (
+--     id          INTEGER PRIMARY KEY AUTOINCREMENT,
+--     description TEXT    NOT NULL,
+--     amount      INTEGER NOT NULL,
+--     date        TEXT    NOT NULL
+-- );

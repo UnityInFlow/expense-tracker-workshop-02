@@ -1,0 +1,10 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:sqlite:expenses.db
+    driver-class-name: org.sqlite.JDBC
+  sql:
+    init:
+      mode: always

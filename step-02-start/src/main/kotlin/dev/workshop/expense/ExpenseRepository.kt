@@ -1,5 +1,7 @@
 package dev.workshop.expense
 
+// ═══ STEP 2 — Repository INSERT/SELECT ═══  Fill in the TODO blocks below, then run: ./mvnw spring-boot:run   (solution: ../step-02-final/)
+
 import org.springframework.stereotype.Repository
 import org.springframework.jdbc.core.JdbcTemplate
 

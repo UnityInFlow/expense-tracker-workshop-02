@@ -1,5 +1,7 @@
 package dev.workshop.expense
 
+// ═══ STEP 5 — Request validation @Valid ═══  Fill in the TODO blocks below, then run: ./mvnw spring-boot:run   (solution: ../step-05-final/)
+
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.http.ResponseEntity
@@ -16,7 +18,10 @@ class ExpenseController(private val service: ExpenseService) {
 
     @Operation(summary = "Adds a new expense")
     @PostMapping
-    fun add(/* TODO: Add @Valid before @RequestBody */ @RequestBody request: CreateExpenseRequest): Expense =
+    // TODO (5.4): Add @Valid before @RequestBody so Spring triggers constraint validation
+    //   Hint: fun add(@Valid @RequestBody request: CreateExpenseRequest): Expense
+    //         Import: import jakarta.validation.Valid
+    fun add(@RequestBody request: CreateExpenseRequest): Expense =
         service.add(request.description, request.amount)
 
     @Operation(summary = "Deletes expense by ID")

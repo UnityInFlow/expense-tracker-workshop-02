@@ -10,7 +10,7 @@ By the end of the workshop you will have a production-ready API where data survi
 
 ## Prerequisites
 
-- Completed **Session 1** ([expense-tracker-workshop-01](https://github.com/UnityInFlow/expense-tracker-workshop-02)) or knowledge of Spring Boot basics
+- Completed **Session 1** ([expense-tracker-workshop-01](https://github.com/UnityInFlow/expense-tracker-workshop-01)) or knowledge of Spring Boot basics
 - IntelliJ IDEA Community + JDK 21
 - sqlite3 CLI (`brew install sqlite3` / `apt install sqlite3`)
 

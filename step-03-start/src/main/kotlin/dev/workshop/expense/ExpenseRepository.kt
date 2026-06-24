@@ -1,5 +1,7 @@
 package dev.workshop.expense
 
+// ═══ STEP 3 — Repository DELETE/findById ═══  Fill in the TODO blocks below, then run: ./mvnw spring-boot:run   (solution: ../step-03-final/)
+
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.support.GeneratedKeyHolder
 import org.springframework.stereotype.Repository

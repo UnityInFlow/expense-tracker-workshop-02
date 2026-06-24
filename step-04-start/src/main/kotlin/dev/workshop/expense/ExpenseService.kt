@@ -1,5 +1,7 @@
 package dev.workshop.expense
 
+// ═══ STEP 4 — Service → Repository ═══  Fill in the TODO blocks below, then run: ./mvnw spring-boot:run   (solution: ../step-04-final/)
+
 import org.springframework.stereotype.Service
 
 @Service

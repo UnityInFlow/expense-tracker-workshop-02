@@ -1,5 +1,7 @@
 package dev.workshop.expense
 
+// ═══ STEP 6 — Error handling @RestControllerAdvice ═══  Fill in the TODO blocks below, then run: ./mvnw spring-boot:run   (solution: ../step-06-final/)
+
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import jakarta.validation.Valid
@@ -31,6 +33,12 @@ class ExpenseController(private val service: ExpenseService) {
 
     @Operation(summary = "Finds expense by ID")
     @GetMapping("/{id}")
+    // TODO (6.2): Replace the if/else ResponseEntity pattern with an elvis throw
+    //   Change the return type from ResponseEntity<Expense> to just Expense
+    //   Hint: fun findById(@PathVariable id: Int): Expense {
+    //             return service.findById(id) ?: throw ExpenseNotFoundException(id)
+    //         }
+    //   Remove the ResponseEntity import once done
     fun findById(@PathVariable id: Int): ResponseEntity<Expense> {
         val expense = service.findById(id)
         return if (expense != null) ResponseEntity.ok(expense)

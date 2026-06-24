@@ -10,18 +10,18 @@ import jakarta.validation.constraints.Size
 //   Hint: import io.swagger.v3.oas.annotations.media.Schema
 
 // TODO (7.2): Annotate the data class itself with @Schema to describe the request body
-//   Hint: @Schema(description = "Request for creating a new expense")
+//   Hint: @Schema(description = "Pozadavek na vytvoreni vydaje")
 
 // TODO (7.3): Annotate `description` with @Schema (place it above the @field:NotBlank line)
-//   Hint: @Schema(description = "Expense description", example = "Lunch at restaurant")
+//   Hint: @Schema(description = "Popis vydaje", example = "Obed v restauraci")
 
 // TODO (7.4): Annotate `amount` with @Schema (place it above the @field:Min line)
-//   Hint: @Schema(description = "Amount in CZK", example = "150")
+//   Hint: @Schema(description = "Castka v Kc", example = "150")
 data class CreateExpenseRequest(
-    @field:NotBlank(message = "Description must not be empty")
-    @field:Size(min = 2, max = 100, message = "Description must be 2-100 characters")
+    @field:NotBlank(message = "Popis nesmi byt prazdny")
+    @field:Size(min = 2, max = 100)
     val description: String,
 
-    @field:Min(value = 1, message = "Amount must be at least 1 CZK")
+    @field:Min(value = 1, message = "Castka musi byt alespon 1 Kc")
     val amount: Int
 )

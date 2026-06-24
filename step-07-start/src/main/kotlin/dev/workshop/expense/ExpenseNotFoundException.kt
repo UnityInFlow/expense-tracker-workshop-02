@@ -1,3 +1,3 @@
 package dev.workshop.expense
 
-class ExpenseNotFoundException(id: Int) : RuntimeException("Expense with ID $id not found")
+class ExpenseNotFoundException(id: Int) : RuntimeException("Vydaj s ID $id nebyl nalezen")

@@ -71,12 +71,21 @@ git clone https://github.com/UnityInFlow/expense-tracker-workshop-02.git
 cd expense-tracker-workshop-02
 ```
 
-## 5. Opening the project in IntelliJ
+## 5. Opening and running the project in IntelliJ
+
+This is a **single Maven project** — you open the repository root once, not per-step folders.
 
 1. Open IntelliJ IDEA
-2. File → Open → select the `step-01-start/` folder (or current step)
+2. File → Open → select the **repository root folder** (the one containing `pom.xml`)
 3. Wait for IntelliJ to download dependencies (progress bar at the bottom)
 4. Check in the bottom right corner that JDK 21 is configured
+5. Run the app — either:
+   - press ▶ next to `fun main(...)` in `Application.kt`, or
+   - in a terminal: `./mvnw spring-boot:run` (Windows: `mvnw.cmd spring-boot:run`)
+6. Open Swagger UI at <http://localhost:8080/swagger-ui/index.html>
+
+Follow the tasks in [STEPS.md](STEPS.md). The full solution lives on the **`final`** branch
+(`git switch final` to view it, `git switch main` to return to your work).
 
 ## Troubleshooting
 

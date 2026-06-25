@@ -2,3 +2,6 @@ target/
 *.db
 .idea/
 *.iml
+
+# Maven wrapper jar is fetched on first ./mvnw run
+.mvn/wrapper/maven-wrapper.jar

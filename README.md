@@ -2,158 +2,96 @@
 
 ## SQLite + Repository + Validation
 
-A follow-up workshop to Session 1. Participants will add a SQLite database, a Repository layer, validation, and error handling. The Controller will not change a single line — validating the architecture from Session 1.
+A follow-up workshop to Session 1. You add a SQLite database, a Repository layer, validation, and
+error handling. The Controller will not change a single line — validating the architecture from
+Session 1. By the end you have a production-ready API where data survives a restart.
 
-By the end of the workshop you will have a production-ready API where data survives a restart.
-
----
-
-## Prerequisites
-
-- Completed **Session 1** ([expense-tracker-workshop-01](https://github.com/UnityInFlow/expense-tracker-workshop-01)) or knowledge of Spring Boot basics
-- IntelliJ IDEA Community + JDK 21
-- sqlite3 CLI (`brew install sqlite3` / `apt install sqlite3`)
+Navazující workshop na Session 1. Přidáš SQLite databázi, Repository vrstvu, validaci a ošetření chyb.
+`ExpenseController` se přitom nezmění — to potvrzuje architekturu ze Session 1.
 
 ---
 
-## Workshop structure
+## How this repository works / Jak repozitář funguje
 
-| Step | Topic | What we build |
-|------|-------|--------------|
-| Step 1 | SQLite setup and schema | `expenses.db` file on disk |
-| Step 2 | Repository: INSERT and SELECT | `ExpenseRepository` with `JdbcTemplate` |
-| Step 3 | Repository: DELETE and findById | Complete CRUD Repository |
-| Step 4 | Service → Repository connection | Data survives a restart! |
-| Step 5 | Request validation @Valid | API rejects invalid data |
-| Step 6 | Error handling | Consistent error responses |
-| Step 7 | OpenAPI finalization | Production-ready Swagger documentation |
+**One Maven project. One folder. Seven steps.** Otevřeš **jeden** projekt a postupně doplňuješ kód.
 
-Each step has:
-- **start** — project with TODO comments (your tasks)
-- **final** — complete solution with explanatory comments
+- **`main` branch** — the project in its **starting state** (working Session-1 API, data in a `HashMap`).
+  The code is marked with `// STEP N — …` comments showing exactly where you write code.
+  Toto je tvoje zadání.
+- **`final` branch** — the **complete solution** (the same single project, fully implemented).
+  Sem se podívej, když se zasekneš.
+
+There are **no** `step-NN` folders anymore. Just open the repo root and follow
+[**STEPS.md**](STEPS.md) from step 1 to step 7.
 
 ---
 
-## How to work with this repository
+## How to run / Jak to spustit
 
-### Option A — Folders (recommended for beginners)
+1. **Open the project / Otevři projekt**
+   IntelliJ IDEA → **File → Open** → select the **repository root folder** (the one with `pom.xml`).
+   Vyber **kořenovou složku** repozitáře (tu, kde je `pom.xml`) — ne podsložku. Počkej na stažení závislostí.
 
-No git knowledge required. Just download and open folders.
+2. **Run / Spusť**
+   ```bash
+   ./mvnw spring-boot:run
+   ```
+   (Windows: `mvnw.cmd spring-boot:run`. Or just press ▶ on `Application.kt` in IntelliJ.)
 
-**1. Download the repository:**
+3. **Open Swagger UI / Otevři Swagger**
+   <http://localhost:8080/swagger-ui/index.html> — test the API in your browser.
 
-Click the green **Code** button → **Download ZIP** on this page.
-Unzip the file.
+4. **Inspect the database / Podívej se do DB** (from step 1 on / od kroku 1)
+   ```bash
+   sqlite3 expenses.db ".tables"
+   sqlite3 expenses.db "SELECT * FROM expenses;"
+   ```
 
-**2. Getting started — Step 1:**
-
-- Open IntelliJ IDEA
-- File → Open → select the `step-01-start` folder
-- Wait for dependencies to download
-- Fill in the code where you see `// TODO:` comments
-- Run: `./mvnw spring-boot:run`
-
-**3. When you're done or stuck:**
-
-Open the `step-01-final/` folder in IntelliJ — that's the complete solution.
-
-**4. Continue to the next step:**
-
-Close the project and open `step-02-start/`.
-
-**Step-by-step flow:**
-```
-step-01-start/  →  fill in TODO  →  compare with  →  step-01-final/
-step-02-start/  →  fill in TODO  →  compare with  →  step-02-final/
-step-03-start/  →  fill in TODO  →  compare with  →  step-03-final/
-step-04-start/  →  fill in TODO  →  compare with  →  step-04-final/
-step-05-start/  →  fill in TODO  →  compare with  →  step-05-final/
-step-06-start/  →  fill in TODO  →  compare with  →  step-06-final/
-step-07-start/  →  fill in TODO  →  compare with  →  step-07-final/  ← FINAL STATE
-```
-
-**Tip — verifying data in the database:**
-```bash
-sqlite3 expenses.db ".tables"              # shows tables
-sqlite3 expenses.db "SELECT * FROM expenses;"  # shows data
-```
+> **Stuck? / Zasekl ses?** Switch to the solution and back:
+> ```bash
+> git switch final     # complete solution / kompletní řešení
+> git switch main      # back to your work / zpět ke svému zadání
+> ```
 
 ---
 
-### Option B — Git branches (for advanced users)
+## Workshop steps / Kroky workshopu
 
-Each step has its own branch. The branch contains ONLY the files for that step (at root level) — a complete Maven project.
+Full guide with goals, tasks, hints and "done when…" checks: [**STEPS.md**](STEPS.md).
 
-**1. Clone the repository:**
+| Step | Topic | What you build |
+|------|-------|----------------|
+| 1 | SQLite setup & schema | `expenses.db` file on disk |
+| 2 | Repository: INSERT & SELECT | `ExpenseRepository` with `JdbcTemplate` |
+| 3 | Repository: DELETE & findById | Complete CRUD repository |
+| 4 | Service → Repository | **Data survives a restart!** |
+| 5 | Request validation `@Valid` | API rejects invalid data (400) |
+| 6 | Error handling | Consistent JSON error responses |
+| 7 | OpenAPI finalization | Production-ready Swagger docs |
 
-```bash
-git clone https://github.com/UnityInFlow/expense-tracker-workshop-02.git
-cd expense-tracker-workshop-02
-```
-
-**2. Switch to the first step:**
-
-```bash
-git checkout step-01-start
-```
-
-You now see the complete Maven project at the root. Open it in IntelliJ.
-
-**3. Work on the tasks:**
-
-Edit the files directly — fill in the code where you see `// TODO:`.
-Run: `./mvnw spring-boot:run`
-
-**4. When you're done or stuck:**
-
-```bash
-git stash                     # saves your changes aside
-git checkout step-01-final    # switches to the solution
-```
-
-**5. Continue to the next step:**
-
-```bash
-git checkout step-02-start    # next step
-```
-
-**All available branches:**
-```
-step-01-start    step-01-final
-step-02-start    step-02-final
-step-03-start    step-03-final
-step-04-start    step-04-final    ← data survives a restart!
-step-05-start    step-05-final
-step-06-start    step-06-final
-step-07-start    step-07-final    ← final state
-```
-
-**Tip — comparing your work with the solution:**
-```bash
-# On step-02-start after your work:
-git diff step-02-final -- src/
-```
-
-**Tip — jumping to any step (when you fall behind):**
-```bash
-git checkout step-04-start    # skip to Step 4
-# Continue from here — all previous steps are done
-```
-
----
-
-## Key moments
+### Key moments / Klíčové momenty
 
 | Step | What happens |
-|------|-------------|
-| Step 4 final | **Data survives a restart!** HashMap replaced by SQLite. Controller did not change. |
-| Step 5 final | API rejects empty descriptions and negative amounts — validation works. |
-| Step 6 final | All errors in the same JSON format — consistent. |
-| Step 7 final | Swagger UI with example values and error codes — production ready. |
+|------|--------------|
+| 4 | **Data survives a restart!** HashMap replaced by SQLite — Controller unchanged. |
+| 5 | API rejects empty descriptions and negative amounts — validation works. |
+| 6 | All errors in the same JSON format — consistent. |
+| 7 | Swagger UI with example values and error codes — production ready. |
 
 ---
 
-## Tools
+## Prerequisites / Předpoklady
+
+- Completed **Session 1** ([expense-tracker-workshop-01](https://github.com/UnityInFlow/expense-tracker-workshop-01))
+  or Spring Boot basics
+- IntelliJ IDEA Community + JDK 21
+- `sqlite3` CLI (`brew install sqlite3` / `apt install sqlite3`)
+
+Detailed install guide: [SETUP.md](SETUP.md).
+
+---
+
+## Tools / Nástroje
 
 | Tool | Usage |
 |------|-------|
@@ -162,14 +100,12 @@ git checkout step-04-start    # skip to Step 4
 | sqlite3 CLI | Verifying data in the database |
 | Swagger UI | Testing the API in the browser |
 
-Detailed installation guide: [SETUP.md](SETUP.md)
-
 ---
 
-## Related
+## Related / Souvislosti
 
 **Session 1 — Kotlin & Spring Boot Basics**
-https://github.com/UnityInFlow/expense-tracker-workshop-01
+<https://github.com/UnityInFlow/expense-tracker-workshop-01>
 
 **Next steps after the workshop:**
 - W01 Kotlin Idioms — idiomatic Kotlin for backend

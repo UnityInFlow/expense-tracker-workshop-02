@@ -1,13 +1,15 @@
 # Expense Tracker Workshop — Session 2
 
-## SQLite + Repository + Validation
+## SQLite + Repository + Swagger
 
-A follow-up workshop to Session 1. You add a SQLite database, a Repository layer, validation, and
-error handling. The Controller will not change a single line — validating the architecture from
-Session 1. By the end you have a production-ready API where data survives a restart.
+A follow-up workshop to Session 1. You take the request through the whole stack —
+**Controller → Service → Repository → SQLite** — make the data survive a restart, and document
+it with Swagger/OpenAPI (plus a bonus error handler). The core of the Controller doesn't change —
+that validates the layered architecture from Session 1.
 
-Navazující workshop na Session 1. Přidáš SQLite databázi, Repository vrstvu, validaci a ošetření chyb.
-`ExpenseController` se přitom nezmění — to potvrzuje architekturu ze Session 1.
+Navazující workshop na Session 1. Provedeš request celým řezem **Controller → Service → Repository →
+SQLite**, data přežijí restart a zdokumentuješ je Swaggerem (+ bonusový error handling).
+Jádro `ExpenseController`u se nemění — to potvrzuje vrstvenou architekturu ze Session 1.
 
 ---
 

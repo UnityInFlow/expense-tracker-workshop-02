@@ -1,38 +1,46 @@
 # STEPS — Expense Tracker, Session 2
 
-Postupný průvodce / step-by-step guide. Pracuješ v **jednom** Maven projektu (tomhle).
-Otevři ho jednou a postupně doplňuj kód podle kroků 1–7 níže.
+Postupný průvodce / step-by-step guide. Pracuješ v **jednom** Maven projektu na větvi **`start`**.
+Přepni se na ni a postupně doplňuj kód podle kroků 1–7 níže.
 
-You work in **one** Maven project (this one). Open it once and fill in the code
-step by step, following steps 1–7 below.
+You work in **one** Maven project on the **`start`** branch. Switch to it and fill in the code
+step by step, following steps 1–7 below. The complete solution is on **`main`** (and **`final`**).
 
 ---
 
 ## Jak začít / Getting started
 
-1. **Otevři projekt / Open the project**
+1. **Přepni se na zadání / Switch to the tasks**
+   ```bash
+   git switch start
+   ```
+
+2. **Otevři projekt / Open the project**
    IntelliJ IDEA → **File → Open** → vyber **kořenovou složku repozitáře** (ta, kde je `pom.xml`).
    *(Select the repository root folder — the one containing `pom.xml`. Not a sub-folder.)*
    Počkej, až IntelliJ stáhne závislosti.
 
-2. **Spusť aplikaci / Run the app**
+3. **Spusť aplikaci / Run the app**
    ```bash
    ./mvnw spring-boot:run
    ```
+   SQLite se **neinstaluje** — driver `sqlite-jdbc` je závislost v `pom.xml` a soubor
+   `expenses.db` si appka vytvoří sama při startu (od kroku 1 dál).
 
-3. **Swagger UI**
+4. **Swagger UI**
    <http://localhost:8080/swagger-ui/index.html> — tady testuješ API v prohlížeči.
 
-4. **Ověř data v DB / Inspect the database** (od kroku 1 dál / from step 1 on)
+5. **Ověř data v DB / Inspect the database** (od kroku 1 dál / from step 1 on)
    ```bash
    sqlite3 expenses.db ".tables"
    sqlite3 expenses.db "SELECT * FROM expenses;"
    ```
+   *(`sqlite3` CLI je volitelný — slouží jen k prohlížení dat, appka ho nepotřebuje.)*
 
-> **Zasekl ses? / Stuck?** Přepni na větev **`final`** a podívej se na kompletní řešení:
+> **Zasekl ses? / Stuck?** Kompletní řešení je na větvi **`main`** (i na **`final`**):
 > ```bash
-> git switch final     # kompletní řešení / the full solution
-> git switch main      # zpět ke svému zadání / back to your work
+> git switch main      # kompletní řešení / the full solution (= final)
+> git switch start     # zpět ke svému zadání / back to your work
 > ```
 
 **Výchozí stav / Starting point:** funkční REST API ze Session 1 — data v `HashMap` (zmizí po restartu).
@@ -199,4 +207,4 @@ u jednotlivých endpointů (`/swagger-ui/index.html`).
 ---
 
 🎉 **Hotovo!** Máš produkční API: SQLite perzistence, validace, jednotné chyby a Swagger dokumentaci —
-a `ExpenseController` se od Session 1 prakticky nezměnil. Kompletní řešení: větev **`final`**.
+a `ExpenseController` se od Session 1 prakticky nezměnil. Kompletní řešení: větev **`main`** (i **`final`**).

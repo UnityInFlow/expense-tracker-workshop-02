@@ -31,7 +31,7 @@ class GlobalExceptionHandler {
     @ExceptionHandler(ExpenseNotFoundException::class)
     fun handleNotFound(ex: ExpenseNotFoundException): ResponseEntity<ErrorResponse> {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-            ErrorResponse(404, "Not Found", ex.message ?: "Vydaj nenalezen")
+            ErrorResponse(404, "Not Found", ex.message ?: "Expense not found")
         )
     }
 
@@ -39,7 +39,7 @@ class GlobalExceptionHandler {
     @ExceptionHandler(Exception::class)
     fun handleGeneral(ex: Exception): ResponseEntity<ErrorResponse> {
         return ResponseEntity.internalServerError().body(
-            ErrorResponse(500, "Internal Server Error", "Nastala neocekavana chyba")
+            ErrorResponse(500, "Internal Server Error", "An unexpected error occurred")
         )
     }
 }

@@ -8,12 +8,12 @@ package dev.workshop.expense
 //         import jakarta.validation.constraints.Size
 
 // TODO (5.2): Annotate `description` with @field:NotBlank and @field:Size
-//   Hint: @field:NotBlank(message = "Popis nesmi byt prazdny")
-//         @field:Size(min = 2, max = 100)
+//   Hint: @field:NotBlank(message = "Description must not be empty")
+//         @field:Size(min = 2, max = 100, message = "Description must be 2-100 characters")
 //   NOTE: In a Kotlin data class use the @field: prefix so the annotation targets the backing field
 
 // TODO (5.3): Annotate `amount` with @field:Min
-//   Hint: @field:Min(value = 1, message = "Castka musi byt alespon 1 Kc")
+//   Hint: @field:Min(value = 1, message = "Amount must be at least 1 CZK")
 data class CreateExpenseRequest(
     val description: String,
     val amount: Int

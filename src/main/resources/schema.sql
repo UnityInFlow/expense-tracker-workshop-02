@@ -1,0 +1,11 @@
+-- STEP 1 — SQLite setup: define the expenses table. Spring runs this file on startup
+-- once the datasource is configured (see application.yaml).
+
+-- TODO (step 1): write the CREATE TABLE statement for the expenses table.
+--   Hint:
+--   CREATE TABLE IF NOT EXISTS expenses (
+--       id          INTEGER PRIMARY KEY AUTOINCREMENT,
+--       description TEXT    NOT NULL,
+--       amount      INTEGER NOT NULL,
+--       date        TEXT    NOT NULL
+--   );

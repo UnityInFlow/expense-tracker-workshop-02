@@ -7,16 +7,16 @@ import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
-@Tag(name = "Expense Tracker", description = "API pro spravu vydaju")
+@Tag(name = "Expense Tracker", description = "Expense management API")
 @RestController
 @RequestMapping("/expenses")
 class ExpenseController(private val service: ExpenseService) {
 
-    @Operation(summary = "Vrati seznam vsech vydaju")
+    @Operation(summary = "Returns list of all expenses")
     @GetMapping
     fun getAll(): List<Expense> = service.getAll()
 
-    @Operation(summary = "Prida novy vydaj")
+    @Operation(summary = "Adds a new expense")
     @PostMapping
     // TODO (5.4): Add @Valid before @RequestBody so Spring triggers constraint validation
     //   Hint: fun add(@Valid @RequestBody request: CreateExpenseRequest): Expense
@@ -24,16 +24,16 @@ class ExpenseController(private val service: ExpenseService) {
     fun add(@RequestBody request: CreateExpenseRequest): Expense =
         service.add(request.description, request.amount)
 
-    @Operation(summary = "Smaze vydaj podle ID")
+    @Operation(summary = "Deletes expense by ID")
     @DeleteMapping("/{id}")
     fun delete(@PathVariable id: Int): Map<String, Any> =
         mapOf("success" to service.delete(id))
 
-    @Operation(summary = "Vrati celkovou sumu vydaju")
+    @Operation(summary = "Returns total sum of all expenses")
     @GetMapping("/total")
     fun getTotal(): Map<String, Int> = mapOf("total" to service.total())
 
-    @Operation(summary = "Najde vydaj podle ID")
+    @Operation(summary = "Finds expense by ID")
     @GetMapping("/{id}")
     fun findById(@PathVariable id: Int): ResponseEntity<Expense> {
         val expense = service.findById(id)

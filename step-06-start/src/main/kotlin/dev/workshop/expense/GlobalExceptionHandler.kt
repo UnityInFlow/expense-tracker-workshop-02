@@ -30,12 +30,12 @@ package dev.workshop.expense
 //   Hint: @ExceptionHandler(ExpenseNotFoundException::class)
 //         fun handleNotFound(ex: ExpenseNotFoundException): ResponseEntity<ErrorResponse> {
 //             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-//                 .body(ErrorResponse(404, "Not Found", ex.message ?: "Vydaj nenalezen"))
+//                 .body(ErrorResponse(404, "Not Found", ex.message ?: "Expense not found"))
 //         }
 
 // TODO (6.8): Add a catch-all handler for any other Exception (500 Internal Server Error)
 //   Hint: @ExceptionHandler(Exception::class)
 //         fun handleGeneral(ex: Exception): ResponseEntity<ErrorResponse> {
 //             return ResponseEntity.internalServerError()
-//                 .body(ErrorResponse(500, "Internal Server Error", "Nastala neocekavana chyba"))
+//                 .body(ErrorResponse(500, "Internal Server Error", "An unexpected error occurred"))
 //         }

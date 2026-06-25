@@ -15,18 +15,21 @@ Navazující workshop na Session 1. Přidáš SQLite databázi, Repository vrstv
 
 **One Maven project. One folder. Seven steps.** Otevřeš **jeden** projekt a postupně doplňuješ kód.
 
-- **`main` branch** — the project in its **starting state** (working Session-1 API, data in a `HashMap`).
-  The code is marked with `// STEP N — …` comments showing exactly where you write code.
-  Toto je tvoje zadání.
-- **`final` branch** — the **complete solution** (the same single project, fully implemented).
-  Sem se podívej, když se zasekneš.
+- **`start` branch** — the project in its **starting state** (working Session-1 API, data in a `HashMap`).
+  The code is marked with `// STEP N — …` comments + `// TODO`s showing exactly where you write code.
+  **Začni tady:** `git switch start`.
+- **`main` (= `final` branch)** — the **complete solution** (the same single project, fully implemented).
+  Each `// STEP N — …` comment sits above the code that step adds. Sem se podívej, když se zasekneš.
 
-There are **no** `step-NN` folders anymore. Just open the repo root and follow
+There are **no** `step-NN` folders anymore. Switch to **`start`**, open the repo root and follow
 [**STEPS.md**](STEPS.md) from step 1 to step 7.
 
 ---
 
 ## How to run / Jak to spustit
+
+> **Workshop participants / Účastníci:** začni na větvi **`start`** (`git switch start`) a vyplňuj
+> kód podle [STEPS.md](STEPS.md). Kroky níže fungují stejně na kterékoli větvi.
 
 1. **Open the project / Otevři projekt**
    IntelliJ IDEA → **File → Open** → select the **repository root folder** (the one with `pom.xml`).
@@ -47,10 +50,10 @@ There are **no** `step-NN` folders anymore. Just open the repo root and follow
    sqlite3 expenses.db "SELECT * FROM expenses;"
    ```
 
-> **Stuck? / Zasekl ses?** Switch to the solution and back:
+> **Stuck? / Zasekl ses?** The complete solution is on **`main`** (and the **`final`** branch):
 > ```bash
-> git switch final     # complete solution / kompletní řešení
-> git switch main      # back to your work / zpět ke svému zadání
+> git switch main      # complete solution / kompletní řešení (= final)
+> git switch start     # back to your work / zpět ke svému zadání
 > ```
 
 ---

@@ -6,10 +6,10 @@ import jakarta.validation.constraints.Size
 
 // @field: prefix = annotation belongs to the property, not to the constructor
 data class CreateExpenseRequest(
-    @field:NotBlank(message = "Description must not be empty")
-    @field:Size(min = 2, max = 100, message = "Description must be 2-100 characters")
+    @field:NotBlank(message = "Popis nesmi byt prazdny")
+    @field:Size(min = 2, max = 100)
     val description: String,
 
-    @field:Min(value = 1, message = "Amount must be at least 1 CZK")
+    @field:Min(value = 1, message = "Castka musi byt alespon 1 Kc")
     val amount: Int
 )

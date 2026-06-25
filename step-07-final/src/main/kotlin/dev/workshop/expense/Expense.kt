@@ -2,14 +2,14 @@ package dev.workshop.expense
 
 import io.swagger.v3.oas.annotations.media.Schema
 
-@Schema(description = "Expense in the system")
+@Schema(description = "Vydaj v systemu")
 data class Expense(
-    @Schema(description = "Unique expense ID", example = "1")
+    @Schema(description = "Unikatni ID", example = "1")
     val id: Int,
-    @Schema(description = "Expense description", example = "Lunch at restaurant")
+    @Schema(description = "Popis vydaje", example = "Obed v restauraci")
     val description: String,
-    @Schema(description = "Amount in CZK", example = "150")
+    @Schema(description = "Castka v Kc", example = "150")
     val amount: Int,
-    @Schema(description = "Expense date YYYY-MM-DD", example = "2024-01-15")
+    @Schema(description = "Datum YYYY-MM-DD", example = "2024-01-15")
     val date: String
 )

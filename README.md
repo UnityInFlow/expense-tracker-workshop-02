@@ -58,6 +58,24 @@ There are **no** `step-NN` folders anymore. Switch to **`start`**, open the repo
 
 ---
 
+## Test the API / Otestuj API
+
+Two ready-made ways to exercise the endpoints (app must be running):
+
+- **`expense-tracker.http`** — open in IntelliJ and click the green ▶ next to each request
+  (built-in HTTP Client; `> {% ... %}` blocks assert the status/body).
+- **`smoke-test.sh`** — runs all the curl checks with ✅/❌:
+  ```bash
+  ./smoke-test.sh            # http://localhost:8080
+  ./smoke-test.sh 8090       # custom port
+  ```
+
+> ⚠️ **Use `http://`, not `https://`.** The app speaks plain HTTP. Opening
+> `https://localhost:8080/...` produces a blank page and a Tomcat
+> *"Invalid character found in method name"* log line.
+
+---
+
 ## Workshop steps / Kroky workshopu
 
 Full guide with goals, tasks, hints and "done when…" checks: [**STEPS.md**](STEPS.md).

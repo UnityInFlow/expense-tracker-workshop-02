@@ -1,12 +1,11 @@
 server:
   port: 8080
 
-# STEP 1 — SQLite setup: point Spring at a SQLite file and run schema.sql on startup.
-# TODO (step 1): uncomment the block below (remove the leading '#' from each line, keep the indentation).
-# spring:
-#   datasource:
-#     url: jdbc:sqlite:expenses.db
-#     driver-class-name: org.sqlite.JDBC
-#   sql:
-#     init:
-#       mode: always
+# STEP 1 — SQLite setup: connect Spring to a SQLite file and run schema.sql on startup.
+spring:
+  datasource:
+    url: jdbc:sqlite:expenses.db
+    driver-class-name: org.sqlite.JDBC
+  sql:
+    init:
+      mode: always

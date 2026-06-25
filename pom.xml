@@ -39,8 +39,7 @@
             <version>2.3.0</version>
         </dependency>
 
-        <!-- STEP 1 — SQLite setup: add the SQLite driver + Spring's JDBC starter, then uncomment. -->
-        <!-- TODO (step 1): remove the surrounding comment markers to enable these two dependencies.
+        <!-- STEP 1 — SQLite setup: SQLite driver + Spring's JDBC starter (JdbcTemplate). -->
         <dependency>
             <groupId>org.xerial</groupId>
             <artifactId>sqlite-jdbc</artifactId>
@@ -50,15 +49,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
-        -->
 
-        <!-- STEP 5 — Bean Validation: add the validation starter so @Valid / @NotBlank work. -->
-        <!-- TODO (step 5): remove the surrounding comment markers to enable this dependency.
+        <!-- STEP 5 — Bean Validation: enables @Valid / @NotBlank / @Size / @Min. -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
-        -->
     </dependencies>
     <build>
         <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>

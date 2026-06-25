@@ -1,16 +1,45 @@
 package dev.workshop.expense
 
-// STEP 6 — Error handling: one @RestControllerAdvice that turns exceptions into a consistent
-// JSON error body (status / error / message) for 400 (validation), 404 (not found), 500 (other).
-//
-// This file is intentionally empty so the Session-1 app still compiles. Fill it in during STEP 6.
-//
-// TODO (step 6): define ErrorResponse and the advice:
-//   data class ErrorResponse(val status: Int, val error: String, val message: String)
-//
-//   @RestControllerAdvice
-//   class GlobalExceptionHandler {
-//       @ExceptionHandler(MethodArgumentNotValidException::class) -> 400
-//       @ExceptionHandler(ExpenseNotFoundException::class)        -> 404
-//       @ExceptionHandler(Exception::class)                       -> 500
-//   }
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.MethodArgumentNotValidException
+import org.springframework.web.bind.annotation.ExceptionHandler
+import org.springframework.web.bind.annotation.RestControllerAdvice
+
+// STEP 6 — Error handling: a consistent error body returned for every handled exception.
+data class ErrorResponse(
+    val status: Int,
+    val error: String,
+    val message: String
+)
+
+// STEP 6 — Error handling: @RestControllerAdvice = global exception interceptor for all controllers.
+@RestControllerAdvice
+class GlobalExceptionHandler {
+
+    // Validation errors — @Valid fails → 400
+    @ExceptionHandler(MethodArgumentNotValidException::class)
+    fun handleValidation(ex: MethodArgumentNotValidException): ResponseEntity<ErrorResponse> {
+        val message = ex.bindingResult.fieldErrors
+            .joinToString(", ") { "${it.field}: ${it.defaultMessage}" }
+        return ResponseEntity.badRequest().body(
+            ErrorResponse(400, "Validation Error", message)
+        )
+    }
+
+    // Expense not found → 404
+    @ExceptionHandler(ExpenseNotFoundException::class)
+    fun handleNotFound(ex: ExpenseNotFoundException): ResponseEntity<ErrorResponse> {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
+            ErrorResponse(404, "Not Found", ex.message ?: "Expense not found")
+        )
+    }
+
+    // Unexpected errors → 500
+    @ExceptionHandler(Exception::class)
+    fun handleGeneral(ex: Exception): ResponseEntity<ErrorResponse> {
+        return ResponseEntity.internalServerError().body(
+            ErrorResponse(500, "Internal Server Error", "An unexpected error occurred")
+        )
+    }
+}

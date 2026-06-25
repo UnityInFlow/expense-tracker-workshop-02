@@ -81,24 +81,24 @@ Two ready-made ways to exercise the endpoints (app must be running):
 Full guide with goals, tasks, hints and "done when…" checks: [**STEPS.md**](STEPS.md).
 Odkazy ke čtení k tématům / further-reading links: [**RESOURCES.md**](RESOURCES.md).
 
+Request flow: **Controller → Service → Repository → SQLite** (see STEPS.md).
+
 | Step | Topic | What you build |
 |------|-------|----------------|
 | 1 | SQLite setup & schema | `expenses.db` file on disk |
 | 2 | Repository: INSERT & SELECT | `ExpenseRepository` with `JdbcTemplate` |
 | 3 | Repository: DELETE & findById | Complete CRUD repository |
 | 4 | Service → Repository | **Data survives a restart!** |
-| 5 | Request validation `@Valid` | API rejects invalid data (400) |
-| 6 | Error handling | Consistent JSON error responses |
-| 7 | OpenAPI finalization | Production-ready Swagger docs |
+| 5 | OpenAPI / Swagger (+ live demo) | Production-ready Swagger docs |
+| 6 *(bonus)* | Error handling | Consistent JSON error responses (404/500) |
 
 ### Key moments / Klíčové momenty
 
 | Step | What happens |
 |------|--------------|
 | 4 | **Data survives a restart!** HashMap replaced by SQLite — Controller unchanged. |
-| 5 | API rejects empty descriptions and negative amounts — validation works. |
-| 6 | All errors in the same JSON format — consistent. |
-| 7 | Swagger UI with example values and error codes — production ready. |
+| 5 | Swagger UI with descriptions + examples; live POST/GET demo through the whole stack. |
+| 6 *(bonus)* | Missing id → consistent 404 JSON instead of the default error page. |
 
 ---
 

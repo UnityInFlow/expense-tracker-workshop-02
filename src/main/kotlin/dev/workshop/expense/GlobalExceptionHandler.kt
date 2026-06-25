@@ -2,30 +2,19 @@ package dev.workshop.expense
 
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
 
-// STEP 6 — Error handling: a consistent error body returned for every handled exception.
+// STEP 6 (BONUS) — Error handling: a consistent error body returned for every handled exception.
 data class ErrorResponse(
     val status: Int,
     val error: String,
     val message: String
 )
 
-// STEP 6 — Error handling: @RestControllerAdvice = global exception interceptor for all controllers.
+// STEP 6 (BONUS) — Error handling: @RestControllerAdvice = global exception interceptor for all controllers.
 @RestControllerAdvice
 class GlobalExceptionHandler {
-
-    // Validation errors — @Valid fails → 400
-    @ExceptionHandler(MethodArgumentNotValidException::class)
-    fun handleValidation(ex: MethodArgumentNotValidException): ResponseEntity<ErrorResponse> {
-        val message = ex.bindingResult.fieldErrors
-            .joinToString(", ") { "${it.field}: ${it.defaultMessage}" }
-        return ResponseEntity.badRequest().body(
-            ErrorResponse(400, "Validation Error", message)
-        )
-    }
 
     // Expense not found → 404
     @ExceptionHandler(ExpenseNotFoundException::class)

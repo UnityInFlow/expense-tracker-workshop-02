@@ -79,6 +79,7 @@ Two ready-made ways to exercise the endpoints (app must be running):
 ## Workshop steps / Kroky workshopu
 
 Full guide with goals, tasks, hints and "done when…" checks: [**STEPS.md**](STEPS.md).
+Odkazy ke čtení k tématům / further-reading links: [**RESOURCES.md**](RESOURCES.md).
 
 | Step | Topic | What you build |
 |------|-------|----------------|

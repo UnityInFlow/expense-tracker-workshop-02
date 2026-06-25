@@ -5,18 +5,19 @@ import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
+// The Controller is the entry point of the API — it maps HTTP requests to methods
+// and delegates down the chain. Request flow:
+//     HTTP  ->  ExpenseController  ->  ExpenseService  ->  ExpenseRepository  ->  SQLite
 @Tag(name = "Expense Tracker", description = "Expense management API")
 @RestController
 @RequestMapping("/expenses")
 class ExpenseController(private val service: ExpenseService) {
 
-    // STEP 7 — OpenAPI: add @ApiResponses to each endpoint to document status codes (see STEPS.md).
+    // STEP 5 — OpenAPI: add @ApiResponse(s) to each endpoint to document status codes (see STEPS.md).
     @Operation(summary = "Returns list of all expenses")
     @GetMapping
     fun getAll(): List<Expense> = service.getAll()
 
-    // STEP 5 — Bean Validation: trigger validation on the request body.
-    // TODO (step 5): add @Valid before @RequestBody (import jakarta.validation.Valid).
     @Operation(summary = "Adds a new expense")
     @PostMapping
     fun add(@RequestBody request: CreateExpenseRequest): Expense =
@@ -31,8 +32,8 @@ class ExpenseController(private val service: ExpenseService) {
     @GetMapping("/total")
     fun getTotal(): Map<String, Int> = mapOf("total" to service.total())
 
-    // STEP 6 — Error handling: replace the manual 404 with an exception handled globally.
-    // TODO (step 6): when the expense is missing, throw ExpenseNotFoundException(id) instead of
+    // STEP 6 (BONUS) — Error handling: replace the manual 404 with an exception handled globally.
+    // TODO (step 6, bonus): when the expense is missing, throw ExpenseNotFoundException(id) instead of
     //   returning ResponseEntity.notFound(). The return type then becomes plain Expense.
     @Operation(summary = "Finds expense by ID")
     @GetMapping("/{id}")

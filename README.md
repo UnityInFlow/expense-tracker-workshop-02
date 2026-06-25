@@ -1,13 +1,15 @@
 # Expense Tracker Workshop — Session 2
 
-## SQLite + Repository + Validation
+## SQLite + Repository + Swagger
 
-A follow-up workshop to Session 1. You add a SQLite database, a Repository layer, validation, and
-error handling. The Controller will not change a single line — validating the architecture from
-Session 1. By the end you have a production-ready API where data survives a restart.
+A follow-up workshop to Session 1. You take the request through the whole stack —
+**Controller → Service → Repository → SQLite** — make the data survive a restart, and document
+it with Swagger/OpenAPI (plus a bonus error handler). The core of the Controller doesn't change —
+that validates the layered architecture from Session 1.
 
-Navazující workshop na Session 1. Přidáš SQLite databázi, Repository vrstvu, validaci a ošetření chyb.
-`ExpenseController` se přitom nezmění — to potvrzuje architekturu ze Session 1.
+Navazující workshop na Session 1. Provedeš request celým řezem **Controller → Service → Repository →
+SQLite**, data přežijí restart a zdokumentuješ je Swaggerem (+ bonusový error handling).
+Jádro `ExpenseController`u se nemění — to potvrzuje vrstvenou architekturu ze Session 1.
 
 ---
 
@@ -81,24 +83,24 @@ Two ready-made ways to exercise the endpoints (app must be running):
 Full guide with goals, tasks, hints and "done when…" checks: [**STEPS.md**](STEPS.md).
 Odkazy ke čtení k tématům / further-reading links: [**RESOURCES.md**](RESOURCES.md).
 
+Request flow: **Controller → Service → Repository → SQLite** (see STEPS.md).
+
 | Step | Topic | What you build |
 |------|-------|----------------|
 | 1 | SQLite setup & schema | `expenses.db` file on disk |
 | 2 | Repository: INSERT & SELECT | `ExpenseRepository` with `JdbcTemplate` |
 | 3 | Repository: DELETE & findById | Complete CRUD repository |
 | 4 | Service → Repository | **Data survives a restart!** |
-| 5 | Request validation `@Valid` | API rejects invalid data (400) |
-| 6 | Error handling | Consistent JSON error responses |
-| 7 | OpenAPI finalization | Production-ready Swagger docs |
+| 5 | OpenAPI / Swagger (+ live demo) | Production-ready Swagger docs |
+| 6 *(bonus)* | Error handling | Consistent JSON error responses (404/500) |
 
 ### Key moments / Klíčové momenty
 
 | Step | What happens |
 |------|--------------|
 | 4 | **Data survives a restart!** HashMap replaced by SQLite — Controller unchanged. |
-| 5 | API rejects empty descriptions and negative amounts — validation works. |
-| 6 | All errors in the same JSON format — consistent. |
-| 7 | Swagger UI with example values and error codes — production ready. |
+| 5 | Swagger UI with descriptions + examples; live POST/GET demo through the whole stack. |
+| 6 *(bonus)* | Missing id → consistent 404 JSON instead of the default error page. |
 
 ---
 

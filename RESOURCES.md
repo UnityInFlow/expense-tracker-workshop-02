@@ -32,21 +32,15 @@ Primárně oficiální dokumentace. *(CZ: čti v pořadí kroků 1–7, jak jdou
 - **Spring — Beans & Dependency Injection:** https://docs.spring.io/spring-framework/reference/core/beans/dependencies/factory-collaborators.html
 - **Layered architecture (controller / service / repository) — přehled:** https://www.baeldung.com/spring-boot-3-tier-architecture-example
 
-## Step 5 — Bean Validation (`@Valid`)
-- **Spring — Validation with Bean Validation:** https://docs.spring.io/spring-framework/reference/core/validation/beanvalidation.html
-- **Spring guide — Validating Form Input:** https://spring.io/guides/gs/validating-form-input/
-- **Jakarta Bean Validation — spec & anotace (`@NotBlank`, `@Size`, `@Min`):** https://beanvalidation.org/ · https://jakarta.ee/specifications/bean-validation/3.0/
-- **Baeldung — Spring Boot validation:** https://www.baeldung.com/spring-boot-bean-validation
-
-## Step 6 — Error handling (`@RestControllerAdvice`)
-- **Spring — `@ExceptionHandler` / controller advice:** https://docs.spring.io/spring-framework/reference/web/webmvc/mvc-controller/ann-exceptionhandler.html
-- **Baeldung — Error Handling for REST with Spring:** https://www.baeldung.com/exception-handling-for-rest-with-spring
-- **Problem Details (RFC 9457) — moderní formát chyb:** https://www.rfc-editor.org/rfc/rfc9457.html
-
-## Step 7 — OpenAPI / Swagger
+## Step 5 — OpenAPI / Swagger
 - **springdoc-openapi (co generuje Swagger UI):** https://springdoc.org/
 - **OpenAPI Specification:** https://swagger.io/specification/
 - **Swagger UI:** https://swagger.io/tools/swagger-ui/
+
+## Step 6 (BONUS) — Error handling (`@RestControllerAdvice`)
+- **Spring — `@ExceptionHandler` / controller advice:** https://docs.spring.io/spring-framework/reference/web/webmvc/mvc-controller/ann-exceptionhandler.html
+- **Baeldung — Error Handling for REST with Spring:** https://www.baeldung.com/exception-handling-for-rest-with-spring
+- **Problem Details (RFC 9457) — moderní formát chyb:** https://www.rfc-editor.org/rfc/rfc9457.html
 
 ---
 

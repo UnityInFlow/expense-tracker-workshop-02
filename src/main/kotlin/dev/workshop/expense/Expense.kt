@@ -2,7 +2,7 @@ package dev.workshop.expense
 
 import io.swagger.v3.oas.annotations.media.Schema
 
-// STEP 7 — OpenAPI: @Schema documents the model so Swagger shows descriptions and examples.
+// STEP 5 — OpenAPI: @Schema documents the model so Swagger shows descriptions and examples.
 @Schema(description = "Expense in the system")
 data class Expense(
     @Schema(description = "Unique expense ID", example = "1")

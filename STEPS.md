@@ -48,6 +48,24 @@ Kód je posetý značkami `// STEP N — …`. Každá značka je místo, kde bu
 
 ---
 
+## Jak teče request / The request flow
+
+Než začneš, ujasni si **vrstvy** — každý request jimi protéká shora dolů:
+
+```
+HTTP  →  ExpenseController  →  ExpenseService  →  ExpenseRepository  →  SQLite
+         (@RestController)     (business logika)   (JdbcTemplate, SQL)   (expenses.db)
+```
+
+- **Controller** (`ExpenseController.kt`) — vstupní bod: mapuje `GET/POST/DELETE /expenses` na metody
+  a deleguje na service. Tělo requestu (`CreateExpenseRequest`) si nechá zmapovat z JSON.
+- **Service** (`ExpenseService.kt`) — business logika; neví nic o HTTP ani o SQL.
+- **Repository** (`ExpenseRepository.kt`) — jediná vrstva, co mluví s databází (SQL přes `JdbcTemplate`).
+
+Tahle separace je pointa: v kroku 4 vyměníš `HashMap` za databázi a **controller se nezmění ani o řádek**.
+
+---
+
 ## Step 1 — SQLite setup & schema
 
 **Cíl / Goal:** přidat SQLite databázi (soubor na disku), aby data přežila restart.
@@ -127,44 +145,46 @@ fun delete(id: Int): Boolean = jdbc.update("DELETE FROM expenses WHERE id = ?", 
       // findById / delete / total → repository
   }
   ```
-- `ExpenseController.kt` se **NEMĚNÍ** — to je pointa architektury ze Session 1.
+- `ExpenseController.kt` se v tomhle kroku **NEMĚNÍ** — to je pointa vrstvené architektury ze
+  Session 1 (controller volá service, service repository). Měnit ho budeš až u OpenAPI v kroku 5.
 
 **Hotovo když… / Done when…** přidáš výdaj přes `POST /expenses`, **restartuješ** appku a `GET /expenses`
 ho pořád vrací. Data jsou v `expenses.db`.
 
 ---
 
-## Step 5 — Bean Validation (@Valid)
+## Step 5 — OpenAPI / Swagger (+ živé demo)
 
-**Cíl / Goal:** API odmítne nevalidní vstup (prázdný popis, záporná částka) s `400`.
+**Cíl / Goal:** produkční Swagger dokumentace — popisy, příklady, stavové kódy — a **živé demo** API.
 
 **Co udělat / What to do:**
-- `pom.xml` — odkomentuj blok **STEP 5** (`spring-boot-starter-validation`).
-- `CreateExpenseRequest.kt` — `@field:NotBlank` + `@field:Size(min=2,max=100)` na `description`,
-  `@field:Min(1)` na `amount` (s anglickými chybovými hláškami).
-- `ExpenseController.kt` — přidej `@Valid` před `@RequestBody` v metodě `add`.
+- `Expense.kt` a `CreateExpenseRequest.kt` — přidej `@Schema(description = …, example = …)` na třídy i pole.
+- `ExpenseController.kt` — přidej `@ApiResponse(s)` na endpointy (200; u `findById` i 404).
 
 **Hint:**
 ```kotlin
-@field:NotBlank(message = "Description must not be empty")
-@field:Size(min = 2, max = 100, message = "Description must be 2-100 characters")
-val description: String,
-@field:Min(value = 1, message = "Amount must be at least 1 CZK")
+@Schema(description = "Amount in CZK", example = "150")
 val amount: Int
+// ...
+@ApiResponse(responseCode = "200", description = "Expense added successfully")
 ```
 
-**Hotovo když… / Done when…** `POST` s `{"description":"","amount":-5}` vrátí **400** (ne 200).
+**Hotovo když… / Done when…** Swagger UI na <http://localhost:8080/swagger-ui/index.html> ukazuje
+popisy polí a příklady. **Živé demo:** rozklikni `POST /expenses` → *Try it out* → *Execute*,
+pak `GET /expenses` — projedeš celý **request flow Controller → Service → Repository → SQLite**.
 
 ---
 
-## Step 6 — Error handling
+## Step 6 (BONUS) — Error handling
+
+> 🎁 Bonus na konec — když zbyde čas. Bez něj API funguje; jen vrací defaultní chybovou odpověď
+> místo hezkého JSON.
 
 **Cíl / Goal:** jednotné chybové odpovědi v JSON formátu (`status` / `error` / `message`).
 
 **Co udělat / What to do:**
 - `ExpenseNotFoundException.kt` — `class ExpenseNotFoundException(id: Int) : RuntimeException("Expense with ID $id not found")`.
 - `GlobalExceptionHandler.kt` — `@RestControllerAdvice` + `data class ErrorResponse(...)` a handlery:
-  - `MethodArgumentNotValidException` → **400**,
   - `ExpenseNotFoundException` → **404**,
   - `Exception` → **500**.
 - `ExpenseController.kt` — v `findById` místo `ResponseEntity.notFound()` **vyhoď** `ExpenseNotFoundException(id)`;
@@ -182,29 +202,5 @@ fun findById(@PathVariable id: Int): Expense =
 
 ---
 
-## Step 7 — OpenAPI finalization
-
-**Cíl / Goal:** produkční Swagger dokumentace — popisy, příklady, chybové kódy.
-
-**Co udělat / What to do:**
-- `Expense.kt` a `CreateExpenseRequest.kt` — přidej `@Schema(description = …, example = …)` na třídy i pole.
-- `ExpenseController.kt` — přidej `@ApiResponses` na endpointy (200, a u `add` 400, u `findById` 404).
-
-**Hint:**
-```kotlin
-@Schema(description = "Amount in CZK", example = "150")
-val amount: Int
-// ...
-@ApiResponses(
-    ApiResponse(responseCode = "200", description = "Expense added successfully"),
-    ApiResponse(responseCode = "400", description = "Invalid request — validation failed")
-)
-```
-
-**Hotovo když… / Done when…** Swagger UI ukazuje popisy polí, příklady a chybové kódy
-u jednotlivých endpointů (`/swagger-ui/index.html`).
-
----
-
-🎉 **Hotovo!** Máš produkční API: SQLite perzistence, validace, jednotné chyby a Swagger dokumentaci —
-a `ExpenseController` se od Session 1 prakticky nezměnil. Kompletní řešení: větev **`main`** (i **`final`**).
+🎉 **Hotovo!** Máš produkční API: SQLite perzistence, čistý flow Controller → Service → Repository
+a Swagger dokumentaci (+ bonusový error handling). Kompletní řešení: větev **`main`** (i **`final`**).

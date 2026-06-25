@@ -9,3 +9,11 @@ spring:
   sql:
     init:
       mode: always
+
+# ─── Logging: see what the app is doing (watch the IntelliJ Run console) ───
+logging:
+  level:
+    web: DEBUG                                                   # incoming HTTP requests (dispatch)
+    sql: DEBUG                                                   # SQL run via JdbcTemplate
+    org.springframework.jdbc.core.StatementCreatorUtils: TRACE  # the bound ?-parameter values
+    dev.workshop.expense: DEBUG                                  # your own app package
